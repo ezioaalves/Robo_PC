@@ -18,13 +18,16 @@ int main()
   srand(time(NULL));
   pos_robo[0] = rand() % 19;
   pos_robo[1] = rand() % 19;
+
   do
   {
     pos_com[0] = rand() % 19;
     pos_com[1] = rand() % 19;
   } while (pos_com[0] == pos_robo[0] && pos_com[1] == pos_robo[1]);
+
   gerar_tabuleiro(pos_robo, pos_com, form_robo);
   char input;
+
   do
   {
     if (pos_com[0] == pos_robo[0] && pos_com[1] == pos_robo[1])
@@ -35,16 +38,18 @@ int main()
     if (input == 'a')
       pos_robo[0] = esquerda(pos_robo[0]);
 
-    if (input == 'd')
+    else if (input == 'd')
       pos_robo[0] = direita(pos_robo[0]);
 
-    if (input == 's')
+    else if (input == 's')
       pos_robo[1] = baixo(pos_robo[1]);
 
-    if (input == 'w')
+    else if (input == 'w')
       pos_robo[1] = cima(pos_robo[1]);
-    if (input == 'm')
+
+    else if (input == 'm')
       form_robo = meta(form_robo);
+
     gerar_tabuleiro(pos_robo, pos_com, form_robo);
   } while (input != 'q');
   cout << "Programa encerrado." << endl;

@@ -30,9 +30,6 @@ int main()
 
   do
   {
-    if (pos_com[0] == pos_robo[0] && pos_com[1] == pos_robo[1])
-      break;
-
     cin >> input;
 
     if (input == 'a')
@@ -51,7 +48,7 @@ int main()
       form_robo = meta(form_robo);
 
     gerar_tabuleiro(pos_robo, pos_com, form_robo);
-  } while (input != 'q');
+  } while (input != 'q' && ((pos_robo[0] != pos_com[0]) || (pos_robo[1] != pos_com[1])));
   cout << "Programa encerrado." << endl;
 }
 

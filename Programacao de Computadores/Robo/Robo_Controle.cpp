@@ -61,10 +61,11 @@ void gerar_tabuleiro(int pos_robo[], int pos_com[], bool form_robo)
     {
       if (i == pos_robo[1] && j == pos_robo[0])
       {
-        if (form_robo == false)
-          cout << "@ ";
-        if (form_robo == true)
+        if (form_robo)
           cout << "$ ";
+
+        else
+          cout << "@ ";
       }
       else if (i == pos_com[1] && j == pos_com[0])
         cout << "O ";

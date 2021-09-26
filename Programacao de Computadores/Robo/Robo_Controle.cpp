@@ -4,40 +4,12 @@ using namespace std;
 
 int tamanho = 20;
 
-void gerar_tabuleiro(int pos_robo[], int pos_com[], bool form_robo)
-{
-  string tabuleiro[tamanho][tamanho];
-  for (int i = 0; i < tamanho; i++)
-  {
-    for (int j = 0; j < tamanho; j++)
-    {
-      if (i == pos_robo[1] && j == pos_robo[0])
-      {
-        if (form_robo == false)
-          cout << "@ ";
-        if (form_robo == true)
-          cout << "$ ";
-      }
-      else if (i == pos_com[1] && j == pos_com[0])
-        cout << "O ";
-      else
-        cout << "+ ";
-    }
-    cout << endl;
-  }
-}
-
+void gerar_tabuleiro(int pos_robo[], int pos_com[], bool form_robo);
 bool meta(bool form_robo);
 int direita(int pos_robo);
 int esquerda(int pos_robo);
 int cima(int pos_robo);
 int baixo(int pos_robo);
-
-/* gerar_tabuleiro = só gerar o tabuleiro
-criar_robo = gerar posicao random do robo
-direcao = mover robo e atualizar sua posicao 
-
-*/
 
 int main()
 {
@@ -76,6 +48,29 @@ int main()
     gerar_tabuleiro(pos_robo, pos_com, form_robo);
   } while (input != 'q');
   cout << "Programa encerrado." << endl;
+}
+
+void gerar_tabuleiro(int pos_robo[], int pos_com[], bool form_robo)
+{
+  string tabuleiro[tamanho][tamanho];
+  for (int i = 0; i < tamanho; i++)
+  {
+    for (int j = 0; j < tamanho; j++)
+    {
+      if (i == pos_robo[1] && j == pos_robo[0])
+      {
+        if (form_robo == false)
+          cout << "@ ";
+        if (form_robo == true)
+          cout << "$ ";
+      }
+      else if (i == pos_com[1] && j == pos_com[0])
+        cout << "O ";
+      else
+        cout << "+ ";
+    }
+    cout << endl;
+  }
 }
 
 int direita(int pos_robo)

@@ -1,7 +1,6 @@
 #include <iostream>
 #include <ctime>
 using namespace std;
-
 int tamanho = 20;
 
 void gerar_tabuleiro(int pos_robo[], int pos_com[], bool form_robo);

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <ctime>
+//#include <conio.h>
+
 using namespace std;
 int tamanho = 20;
 
@@ -16,15 +18,16 @@ int main()
   bool form_robo = false;
 
   //Gera a posição do robô aleatoriamente
-  srand(time(NULL));
-  pos_robo[0] = rand() % 19;
-  pos_robo[1] = rand() % 19;
+  srand(time(0));
+  pos_robo[0] = rand() % 20;
+  pos_robo[1] = rand() % 20;
 
   do
   {
     //Gera posições do alvo
-    pos_alvo[0] = rand() % 19;
-    pos_alvo[1] = rand() % 19;
+    pos_alvo[0] = rand() % 20;
+    pos_alvo[1] = rand() % 20;
+    //Garante que a posição do alvo seja diferete da do robô
   } while (pos_alvo[0] == pos_robo[0] && pos_alvo[1] == pos_robo[1]);
 
   gerar_tabuleiro(pos_robo, pos_alvo, form_robo);
@@ -32,6 +35,11 @@ int main()
 
   do
   {
+    //Recebe um char do usuário sem que ele precise precionar enter,
+    //mas só funcionar pra compiladores do Windows
+
+    //input = _getch();
+
     //Recebe o comando do usuário e coloca em minúsculo
     cin >> input;
     input = tolower(input);
@@ -53,14 +61,13 @@ int main()
 
     gerar_tabuleiro(pos_robo, pos_alvo, form_robo);
   }
-  //Verifica as condições de fechamento do programa.
+  //Encerra o programa caso o usuário pressione 'q' ou a posição do robô seja a mesma do alvo
   while (input != 'q' && ((pos_robo[0] != pos_alvo[0]) || (pos_robo[1] != pos_alvo[1])));
   cout << "Programa encerrado." << endl;
 }
 
 void gerar_tabuleiro(int pos_robo[], int pos_alvo[], bool form_robo)
 {
-  string tabuleiro[tamanho][tamanho];
   for (int i = 0; i < tamanho; i++)
   {
     for (int j = 0; j < tamanho; j++)
@@ -82,6 +89,7 @@ void gerar_tabuleiro(int pos_robo[], int pos_alvo[], bool form_robo)
     }
     cout << endl;
   }
+  cout << endl;
 }
 
 //Define os limites que não podem ser ultrapassados |For all|

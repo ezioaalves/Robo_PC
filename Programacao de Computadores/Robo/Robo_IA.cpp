@@ -10,23 +10,23 @@ void gerar_tabuleiro(int pos_predador[], int pos_presa[]);
 int main()
 {
     int pos_predador[2], pos_presa[2];
-    srand(time(NULL));
+    srand(time(0));
 
     //Gera os índices do predador
-    pos_predador[1] = rand() % 19;
+    pos_predador[1] = rand() % 20;
     do
     {
-        pos_predador[0] = rand() % 19;
+        pos_predador[0] = rand() % 20;
     } while (pos_predador[0] == 10); //Evita que ele apareça na barreira
 
     //Gera os índices da presa
-    pos_presa[1] = rand() % 19;
+    pos_presa[1] = rand() % 20;
     if (pos_predador[0] > 10)
-        pos_presa[0] = rand() % 9;
+        pos_presa[0] = rand() % 10;
 
     else
         //Garante que cada parte surja em um lado oposto do tabuleiro
-        pos_presa[0] = rand() % (19 - 11 + 1) + 11;
+        pos_presa[0] = rand() % (9) + 11;
 
     gerar_tabuleiro(pos_predador, pos_presa);
 
@@ -78,7 +78,6 @@ int main()
 
 void gerar_tabuleiro(int pos_predador[], int pos_presa[])
 {
-    string tabuleiro[tamanho][tamanho];
     for (int i = 0; i < tamanho; i++)
     {
         for (int j = 0; j < tamanho; j++)
